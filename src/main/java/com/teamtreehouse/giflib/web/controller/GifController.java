@@ -68,7 +68,7 @@ public class GifController {
 
     // Upload a new GIF
     @RequestMapping(value = "/gifs", method = RequestMethod.POST)
-    public String addGif(Gif gif, @RequestParam MultipartFile file, RedirectAttributes redirectAttributes) {
+    public String addGif(@Valid Gif gif, @RequestParam MultipartFile file, RedirectAttributes redirectAttributes) {
         // TODO: Upload new GIF if data is valid
         gifService.save(gif, file);
         System.out.println(gif.getId());
@@ -117,6 +117,7 @@ public class GifController {
             redirectAttributes.addFlashAttribute("gif", gif);
         }
 
+        System.out.println(gif.toString());
         gifService.save(gif, file);
         redirectAttributes.addFlashAttribute("flash", new FlashMessage("Gif Successfully Updated", FlashMessage.Status.SUCCESS));
 

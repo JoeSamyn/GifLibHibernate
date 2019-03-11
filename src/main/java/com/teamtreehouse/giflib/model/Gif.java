@@ -20,6 +20,7 @@ public class Gif {
 
     @ManyToOne
     private Category category;
+
     private LocalDateTime dateUploaded = LocalDateTime.now();
     private String username = "You";
     private boolean favorite;
